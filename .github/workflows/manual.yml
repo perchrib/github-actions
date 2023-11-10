@@ -30,3 +30,8 @@ jobs:
     # Runs a single command using the runners shell
     - name: Send greeting
       run: echo "Hello ${{ inputs.name }}"
+
+  build1: 
+    uses: ./.github/workflows/dotnet.yaml
+  build2: 
+    uses: ./.github/workflows/dotnet.yaml
