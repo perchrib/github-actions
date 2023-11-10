@@ -33,7 +33,8 @@ jobs:
 
   build1:
     needs: greet
-    environment: Test
     uses: ./.github/workflows/dotnet.yml
+    with:
+      environment: Test
   build2: 
     uses: ./.github/workflows/dotnet.yml
