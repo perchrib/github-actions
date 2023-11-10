@@ -7,15 +7,11 @@ on:
   workflow_call:
     inputs:
       environment:
-        type: choice
-        options: 
-        - Test
-        - Prod
+        type: string
         
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
     environment: ${{ inputs.environment }}
     steps:
