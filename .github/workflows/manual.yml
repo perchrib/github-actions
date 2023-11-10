@@ -35,6 +35,6 @@ jobs:
     needs: greet
     uses: ./.github/workflows/dotnet.yml
     with:
-      environment: Test
+      environment: Dummy
   build2: 
     uses: ./.github/workflows/dotnet.yml
