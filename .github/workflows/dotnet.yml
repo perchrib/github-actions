@@ -4,7 +4,7 @@
 name: .NET Build
 
 on:
-  workflow_call:
+  workflow_dispatch:
     inputs:
       environment:
         type: string
@@ -17,6 +17,7 @@ jobs:
       name: ${{ inputs.environment }}
       url: https://google.com
     steps:
+    - run: echo "Environment ${{ inputs.environment }}"
     - uses: actions/checkout@v3
     - name: Setup .NET
       uses: actions/setup-dotnet@v3
