@@ -28,7 +28,7 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
     # Runs a single command using the runners shell
-    - name: Send greeting
+    - name: Output Deploy to Porduction?
       run: echo Include Prod ${{ inputs.include_prod }}
 
   build1:
@@ -38,5 +38,5 @@ jobs:
       environment: Dummy
   build2:
     needs: build1
-    if: {{ $inputs.include_prod == 'true' }}
+    if: ${{ inputs.include_prod == true }}
     uses: ./.github/workflows/dotnet.yml
