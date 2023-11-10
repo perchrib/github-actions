@@ -31,7 +31,8 @@ jobs:
     - name: Send greeting
       run: echo "Hello ${{ inputs.name }}"
 
-  build1: 
+  build1:
+    needs: greet
     uses: ./.github/workflows/dotnet.yml
   build2: 
     uses: ./.github/workflows/dotnet.yml
