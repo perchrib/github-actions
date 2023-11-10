@@ -29,7 +29,7 @@ jobs:
     steps:
     # Runs a single command using the runners shell
     - name: Send greeting
-      run: echo Include Prod $inputs.include_prod
+      run: echo Include Prod ${{ inputs.include_prod }}
 
   build1:
     needs: greet
@@ -38,5 +38,5 @@ jobs:
       environment: Dummy
   build2:
     needs: build1
-    if: $inputs.include_prod == true
+    if: {{ $inputs.include_prod == true }}
     uses: ./.github/workflows/dotnet.yml
