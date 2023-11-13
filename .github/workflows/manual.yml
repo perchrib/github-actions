@@ -24,6 +24,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Git Semantic Version
+      id: version
       uses: PaulHatch/semantic-version@v5.3.0
       with:
         # The prefix to use to identify tags
@@ -40,23 +41,24 @@ jobs:
         # A string to determine the format of the version output
         version_format: "${major}.${minor}.${patch}-prerelease${increment}"
         # Named version, will be used as suffix for name version tag
-        namespace: my-service
+        namespace: tekstebanken
         # If this is set to true, *every* commit will be treated as a new version.
         bump_each_commit: false
         # If bump_each_commit is also set to true, setting this value will cause the version to increment only if the pattern specified is matched.
         bump_each_commit_patch_pattern: ""
         # If true, the body of commits will also be searched for major/minor patterns to determine the version type.
-        search_commit_body: false
+        search_commit_body: true
         # The output method used to generate list of users, 'csv' or 'json'.
         user_format_type: "csv"
         # Prevents pre-v1.0.0 version from automatically incrementing the major version.
         # If enabled, when the major version is 0, major releases will be treated as minor and minor as patch. Note that the version_type output is unchanged.
         enable_prerelease_mode: true
         # If enabled, diagnostic information will be added to the action output.
-        debug: false
+        debug: true
         # If true, the branch will be used to select the maximum version.
         version_from_branch: false
-      # This workflow contains a single job called "greet"
+    - name: log
+      run: echo ${{ semver.version.outputs.version_tag }}
   greet:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
