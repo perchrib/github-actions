@@ -39,7 +39,7 @@ jobs:
         # Same as above except indicating a minor change, supports regular expressions wrapped with '/'
         minor_pattern: "feat"
         # A string to determine the format of the version output
-        version_format: "${major}.${minor}.${patch}-rc${increment}"
+        version_format: "${major}.${minor}.${patch}-${increment}"
         # If this is set to true, *every* commit will be treated as a new version.
         bump_each_commit: false
         # If true, the body of commits will also be searched for major/minor patterns to determine the version type.
@@ -55,6 +55,10 @@ jobs:
         version_from_branch: false
     - name: log
       run: echo version_tag ${{ steps.version.outputs.version_tag }} version_type ${{ steps.version.outputs.version_type }}
+    - name: Tag Release (vX.Y.Z)
+        run: |
+          git tag ${{ steps.version.outputs.version_tag }}
+          git push origin ${{ steps.version.outputs.version_tag }}
   greet:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
