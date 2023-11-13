@@ -58,7 +58,7 @@ jobs:
         # If true, the branch will be used to select the maximum version.
         version_from_branch: false
     - name: log
-      run: echo ${{ semver.version.outputs.version_tag }}
+      run: echo ${{ steps.version.outputs.version_tag }}
   greet:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
