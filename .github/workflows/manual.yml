@@ -20,8 +20,8 @@ on:
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  semver:
-    uses: paulhatch/semantic-version@v5.3.0
+  - name: Git Semantic Version
+    uses: PaulHatch/semantic-version@v5.3.0
     with:
       # The prefix to use to identify tags
       tag_prefix: "v"
