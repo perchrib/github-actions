@@ -1,0 +1,9 @@
+name: Print tag
+on: [workflow_dispatch]
+
+jobs:
+  print-tag:
+    runs-on: ubuntu-latest
+    steps:
+    - name: which tag
+      run: echo ${{github.ref_name}}
