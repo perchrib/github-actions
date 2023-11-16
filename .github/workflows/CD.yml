@@ -16,13 +16,14 @@ jobs:
   semver:
     runs-on: ubuntu-latest
     steps:
-    steps:
-      - name: Remove 'v' string 
+      - name: Remove 'v' string
         id: remove_prefix_from_tag
         run: echo  "v1.2.4" | sed "s/v//"
+
       - name: Remove 'v' from git tag
         id: remove_prefix_from_tag
         run: echo "SEMVER_VERSION=$( ${{ github.ref_name }} | sed 's/v//') "  >> $GITHUB_ENV
+
       - name: Print Semver Version
         run: echo ${{ env.SEMVER_VERSION }}
 
