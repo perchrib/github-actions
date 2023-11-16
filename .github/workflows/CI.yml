@@ -53,11 +53,11 @@ jobs:
           version_from_branch: false
       - name: log
         run: |
-        echo version_tag ${{ steps.version.outputs.version_tag }} 
-        version_type ${{ steps.version.outputs.version_type }}
-        echo "Tag name from GITHUB_REF_NAME: $GITHUB_REF_NAME"
-        echo "Tag name from github.ref_name: ${{  github.ref_name }}"
-        echo version_tag github.ref ${{ github.ref }}
+          echo version_tag ${{ steps.version.outputs.version_tag }} 
+          version_type ${{ steps.version.outputs.version_type }}
+          echo "Tag name from GITHUB_REF_NAME: $GITHUB_REF_NAME"
+          echo "Tag name from github.ref_name: ${{  github.ref_name }}"
+          echo version_tag github.ref ${{ github.ref }}
       - name: Tag Release ${{ steps.version.outputs.version_tag }}
         run: |
           git tag ${{ steps.version.outputs.version_tag }}
