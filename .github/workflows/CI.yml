@@ -58,6 +58,12 @@ jobs:
           echo "Tag name from GITHUB_REF_NAME: $GITHUB_REF_NAME"
           echo "Tag name from github.ref_name: ${{  github.ref_name }}"
           echo version_tag github.ref ${{ github.ref }}
+          echo $GITHUB_REF_NAME << steps.version.outputs.version_tag
+          echo $github.ref << steps.version.outputs.version_tag
+          echo "Tag name from github.ref_name: ${{  github.ref_name }}"
+          echo "Tag name from GITHUB_REF_NAME: $GITHUB_REF_NAME"
+          echo "Tag name from github.ref_name: ${{  github.ref_name }}"
+
       - name: Tag Release ${{ steps.version.outputs.version_tag }}
         run: |
           git tag ${{ steps.version.outputs.version_tag }}
