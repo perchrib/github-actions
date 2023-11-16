@@ -1,0 +1,23 @@
+# This is a basic workflow that is manually triggered
+
+name: Deploy
+
+# Controls when the action will run. Workflow runs when manually triggered using the UI
+# or API.
+on:
+  workflow_run:
+    workflows: [Build]
+    types:
+      - completed
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  semver:
+    runs-on: ubuntu-latest
+    steps:
+      - name: log
+        run: echo version_tag ${{ steps.version.outputs.version_tag }} version_type ${{ steps.version.outputs.version_type }}
+      - name: Tag Release (vX.Y.Z)
+        run: |
+          git tag ${{ steps.version.outputs.version_tag }}
+          git push origin ${{ steps.version.outputs.version_tag }}

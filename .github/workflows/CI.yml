@@ -1,0 +1,59 @@
+# This workflow will build a .NET project
+# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-net
+
+name: Build
+
+on: [worflow_dispatch]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4.1.1
+        with:
+          fetch-depth: 0
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: 7.0.x
+
+      - name: Restore dependencies
+        run: dotnet restore src/Api/Api.csproj
+
+      - name: Build
+        run: dotnet build src/Api/Api.csproj --configuration Release --no-restore
+
+      - name: Git Semantic Version
+        id: version
+        uses: PaulHatch/semantic-version@v5.3.0
+        with:
+          # The prefix to use to identify tags
+          tag_prefix: "v"
+          # A string which, if present in a git commit, indicates that a change represents a
+          # major (breaking) change, supports regular expressions wrapped with '/'
+          major_pattern: "major"
+          # Same as above except indicating a minor change, supports regular expressions wrapped with '/'
+          minor_pattern: "feat"
+          # A string to determine the format of the version output
+          version_format: "${major}.${minor}.${patch}-${increment}"
+          # If this is set to true, *every* commit will be treated as a new version.
+          bump_each_commit: false
+          # If true, the body of commits will also be searched for major/minor patterns to determine the version type.
+          search_commit_body: false
+          # The output method used to generate list of users, 'csv' or 'json'.
+          user_format_type: "csv"
+          # Prevents pre-v1.0.0 version from automatically incrementing the major version.
+          # If enabled, when the major version is 0, major releases will be treated as minor and minor as patch. Note that the version_type output is unchanged.
+          enable_prerelease_mode: true
+          # If enabled, diagnostic information will be added to the action output.
+          debug: true
+          # If true, the branch will be used to select the maximum version.
+          version_from_branch: false
+      - name: log
+        run: echo version_tag ${{ steps.version.outputs.version_tag }} version_type ${{ steps.version.outputs.version_type }} GithubRef ${{ github.ref }}
+      - name: Tag Release ${{ steps.version.outputs.version_tag }}
+        run: |
+          git tag ${{ steps.version.outputs.version_tag }}
+          git push origin ${{ steps.version.outputs.version_tag }}
