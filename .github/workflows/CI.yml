@@ -62,6 +62,7 @@ jobs:
         run: |
           echo version_tag ${{ steps.version.outputs.version_tag }} 
           echo version_type ${{ steps.version.outputs.version_type }}
+          echo version ${{ steps.version.outputs.version }}
           echo "Tag name from GITHUB_REF_NAME: $GITHUB_REF_NAME"
           echo "Tag name from github.ref_name: ${{  github.ref_name }}"
           echo version_tag github.ref ${{ github.ref }}
