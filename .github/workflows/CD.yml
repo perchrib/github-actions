@@ -37,4 +37,4 @@ jobs:
           echo "Tag name from GITHUB_REF_NAME: $GITHUB_REF_NAME"
           echo "Tag name from github.ref_name: ${{  github.ref_name }}"
           echo version_tag github.ref ${{ github.ref }}
-          echo SemverVersion: env.SEMVER_VERSION
+          echo SemverVersion: ${{ env.SEMVER_VERSION }}
