@@ -21,7 +21,7 @@ jobs:
 
       - name: Remove 'v' from git tag
         id: remove_prefix_from_tag
-        run: echo "SEMVER_VERSION=$( ${{ github.ref_name }} | sed 's/v//') "  >> $GITHUB_ENV
+        run: echo SEMVER_VERSION=$( ${{ github.ref_name }} | sed "s/v//")  >> $GITHUB_ENV
 
       - name: Print Semver Version
         run: echo ${{ env.SEMVER_VERSION }}
