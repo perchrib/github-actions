@@ -41,7 +41,7 @@ jobs:
           # If this is set to true, *every* commit will be treated as a new version.
           bump_each_commit: false
           # If true, the body of commits will also be searched for major/minor patterns to determine the version type.
-          search_commit_body: false
+          search_commit_body: true
           # The output method used to generate list of users, 'csv' or 'json'.
           user_format_type: "csv"
           # Prevents pre-v1.0.0 version from automatically incrementing the major version.
@@ -52,7 +52,7 @@ jobs:
           # If true, the branch will be used to select the maximum version.
           version_from_branch: false
       - name: log
-        run: echo version_tag ${{ steps.version.outputs.version_tag }} version_type ${{ steps.version.outputs.version_type }} GithubRef ${{ github.ref }}
+        run: echo version_tag ${{ steps.version.outputs.version_tag }} version_type ${{ steps.version.outputs.version_type }}
       - name: Tag Release ${{ steps.version.outputs.version_tag }}
         run: |
           git tag ${{ steps.version.outputs.version_tag }}
