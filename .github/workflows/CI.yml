@@ -38,7 +38,7 @@ jobs:
         id: version
         uses: PaulHatch/semantic-version@v5.3.0
         with:
-          namespace: API
+          tag_prefix: "API"
           # A string which, if present in a git commit, indicates that a change represents a
           # major (breaking) change, supports regular expressions wrapped with '/'
           major_pattern: "major"
