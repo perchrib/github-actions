@@ -38,14 +38,14 @@ jobs:
         id: version
         uses: PaulHatch/semantic-version@v5.3.0
         with:
-          tag_prefix: "API"
+          tag_prefix: ""
           # A string which, if present in a git commit, indicates that a change represents a
           # major (breaking) change, supports regular expressions wrapped with '/'
           major_pattern: "major"
           # Same as above except indicating a minor change, supports regular expressions wrapped with '/'
           minor_pattern: "feat"
           # A string to determine the format of the version output
-          version_format: "${major}.${minor}.${patch}-alpha${increment}"
+          version_format: "AUTH-${major}.${minor}.${patch}-alpha.${increment}"
           # If this is set to true, *every* commit will be treated as a new version.
           bump_each_commit: false
           # If true, the body of commits will also be searched for major/minor patterns to determine the version type.
