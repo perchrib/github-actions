@@ -13,6 +13,14 @@ on:
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
+  # print-tag:
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - name: Remove 'v' string
+  #       id: remove_prefix_from_tag
+  #       run: |
+  #         VERSION=$(echo  ${{ github.ref_name }} | sed "s/v//")
+  #         echo SEMVER_VERSION=$VERSION>> $GITHUB_ENV
   semver:
     runs-on: ubuntu-latest
     steps:
