@@ -38,7 +38,7 @@ jobs:
         id: version
         uses: PaulHatch/semantic-version@v5.3.0
         with:
-          # A string which, if present in a git commit, indicates that a change represents a
+          # A string which, if present in a git commit, indicates that a change represents
           # major (breaking) change, supports regular expressions wrapped with '/'
           tag_prefix: ""
           major_pattern: "major"
