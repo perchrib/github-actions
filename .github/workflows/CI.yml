@@ -40,6 +40,7 @@ jobs:
         with:
           # A string which, if present in a git commit, indicates that a change represents a
           # major (breaking) change, supports regular expressions wrapped with '/'
+          tag_prefix: ""
           major_pattern: "major"
           # Same as above except indicating a minor change, supports regular expressions wrapped with '/'
           minor_pattern: "feat"
