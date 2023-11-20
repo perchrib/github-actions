@@ -46,7 +46,7 @@ jobs:
           # Same as above except indicating a minor change, supports regular expressions wrapped with '/'
           minor_pattern: "feat"
           # A string to determine the format of the version output
-          version_format: "${major}.${minor}.${patch}-${{ github.ref_name}}"
+          version_format: "${major}.${minor}.${patch}-alpha+${{ github.ref_name}}"
           # If this is set to true, *every* commit will be treated as a new version.
           bump_each_commit: false
           # If true, the body of commits will also be searched for major/minor patterns to determine the version type.
@@ -77,5 +77,5 @@ jobs:
 
       - name: Tag Release ${{ steps.version.outputs.version }}
         run: |
-          git tag ${{ steps.version.outputs.version_tag }}
-          git push origin ${{ steps.version.outputs.version_tag }}
+          git tag ${{ steps.version.outputs.version }}
+          git push origin ${{ steps.version.outputs.version }}
