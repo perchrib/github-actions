@@ -77,5 +77,5 @@ jobs:
 
       - name: Tag Release ${{ steps.version.outputs.version }}
         run: |
-          git tag ${{ steps.version.outputs.version_tag }}
-          git push origin ${{ steps.version.outputs.version_tag }}
+          git tag ${{ steps.version.outputs.version }}
+          git push origin ${{ steps.version.outputs.version }}
