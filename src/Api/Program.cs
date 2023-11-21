@@ -6,5 +6,4 @@ var response =
 app.MapGet("/", () => $"Version {Assembly.GetExecutingAssembly().GetName().Version} FullVersion: {Assembly.GetExecutingAssembly()?
   .GetCustomAttribute<AssemblyInformationalVersionAttribute>()?
   .InformationalVersion} ");
-
 app.Run();
