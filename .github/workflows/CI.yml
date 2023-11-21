@@ -58,7 +58,7 @@ jobs:
           enable_prerelease_mode: true
           # If enabled, diagnostic information will be added to the action output
           debug: true
-          # If true, the branch will be used to select the maximum versio
+          # If true, the branch will be used to select the maximum version
           version_from_branch: false
 
       - name: log
