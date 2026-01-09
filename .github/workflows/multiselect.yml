@@ -1,15 +1,15 @@
 name: MultiSelect
 
-workflow_dispatch:
-  inputs:
-    environment:
-      description: Deploy environment name
-      type: choice
-      required: false
-      options:
-        - staging
-        - production
-        - all
-      default: all
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: Deploy environment name
+        type: choice
+        required: false
+        options:
+          - staging
+          - production
+          - all
+        default: all
 
 jobs:
