@@ -11,3 +11,5 @@ workflow_dispatch:
         - production
         - all
       default: all
+
+jobs:
