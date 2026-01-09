@@ -23,6 +23,5 @@ jobs:
           echo "World"
       - name: Set Choice
         run: |
-          echo "::set-output name=foo::$BAR"
-          echo "$BAR" 
+          run: echo "# My Summary Text" >> $GITHUB_STEP_SUMMARY
         
