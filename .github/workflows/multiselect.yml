@@ -14,11 +14,15 @@ on:
         default: all
 jobs:
   firstjob:
-    runs-on: small
+    runs-on: ubuntu-latest
     name: First Job
     steps:
       - name: Echo
         run: |
           echo "Hello"
           echo "World"
+      - name: Set Choice
+        run: |
+          echo "::set-output name=foo::$BAR"
+          echo "$BAR" 
         
