@@ -1,5 +1,6 @@
 name: MultiSelect
 
+on: 
   workflow_dispatch:
     inputs:
       environment:
@@ -11,5 +12,3 @@ name: MultiSelect
           - production
           - all
         default: all
-
-jobs:
