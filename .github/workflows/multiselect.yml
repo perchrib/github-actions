@@ -23,5 +23,5 @@ jobs:
           echo "World"
       - name: Set Choice
         run: |
-          run: echo "# My Summary Text" >> $GITHUB_STEP_SUMMARY
-        
+          echo "# My Summary Text" >> $GITHUB_STEP_SUMMARY
+          echo "Environment => ${{ inputs.environment }}" >> $GITHUB_STEP_SUMMARY
