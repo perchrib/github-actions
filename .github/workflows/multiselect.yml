@@ -12,3 +12,13 @@ on:
           - production
           - all
         default: all
+jobs:
+  firstjob:
+    runs-on: small
+    name: First Job
+    steps:
+      - name: Echo
+        run: |
+          echo "Hello"
+          echo "World"
+        
